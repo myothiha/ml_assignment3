@@ -8,7 +8,6 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    # return '<h1>Hello from Flask & Docker</h2>'
     return render_template("index.html", brands = brand_le.classes_, prediction = 0, default_values=default_values)
 
 @app.route('/predict', methods=['POST'])
@@ -45,9 +44,9 @@ def predict():
 def assignment2():
     load_model = load_model2()
 
+    # load one hot encoder to get a list of brands.
     brand_ohe = load_model['brand_ohe']
 
-    # return '<h1>Hello from Flask & Docker</h2>'
     return render_template("assignment2.html", default_values=default_values, brands = brand_ohe.categories_[0])
 
 @app.route('/a2_predict', methods=['POST'])
@@ -55,10 +54,12 @@ def a2_predict():
 
     load_model = load_model2()
 
+    # Fetch required data from the pickle data.
     model = load_model['model']
     scaler = load_model['scaler']
     brand_ohe = load_model['brand_ohe']
 
+    # receive data from the form.
     if not request.form['max_power']:
         max_power = default_values['max_power']
     else:
@@ -74,14 +75,14 @@ def a2_predict():
     else:
         year = float(request.form['year'])
 
-    # brand = brand_ohe.transform([request.form['brand']])
     encoded_brand = list(brand_ohe.transform([['Skoda']]).toarray()[0])
 
+    # Scale and encode the inputs.
     input_features = np.array([[max_power, mileage, year] + encoded_brand])
     input_features[:, 0: 3] = scaler.transform(input_features[:, 0: 3])
     input_features = np.insert(input_features, 0, 1, axis=1)
 
-    # input_features = PolynomialFeatures(degree = 3).fit_transform(input_features)
+    # Use the model to predict the car price.
     prediction = np.exp(model.predict(input_features))
     prediction = format(prediction[0], ".2f")
 
@@ -92,6 +93,3 @@ port_number = 80
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=port_number)
-
-# if __name__ == "__main__":
-#     app.run(debug=True)
