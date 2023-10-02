@@ -55,7 +55,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: .Dockerfile
+          file: flask.Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
   deploy:

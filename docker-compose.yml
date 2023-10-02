@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   dev:
-    image: myothiha/ml-flask
+    image: myothiha/ml-flask:a3
     ports:
       - "8000:80"
     build:
