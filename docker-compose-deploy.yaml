@@ -2,7 +2,7 @@ version: '1'
 services:
   dev:
     command: "python3 app.py"
-    image: myothiha576/ml-flask
+    image: myothiha576/ml-flask:a3.3
     environment:
       - HOST=0.0.0.0
       - PORT=80

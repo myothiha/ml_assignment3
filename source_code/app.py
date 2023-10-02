@@ -130,7 +130,7 @@ def a3_predict():
     input_features = np.array([[max_power, mileage, year] + encoded_brand])
     input_features[:, 0: 3] = scaler.transform(input_features[:, 0: 3])
     input_features = np.insert(input_features, 0, 1, axis=1)
-    name = 'Myo'
+    name = 'Myo Thiha'
     # Use the model to predict the car price.
     predicted_class = model.predict(input_features)[0]
 
