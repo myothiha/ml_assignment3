@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  dev:
+    image: myothiha/ml-flask
+    ports:
+      - "8000:80"
+    build:
+      context: .
+      dockerfile: flask.Dockerfile
+    volumes:
+      - ./source_code:/root/source_code
+      - ./.vscode-server:/root/.vscode-server
+    command: python3 app.py

@@ -1,0 +1,10 @@
+Flask==2.3.3
+seaborn
+pandas==2.1.1
+numpy
+matplotlib==3.7.3
+scikit-learn==1.3.1
+ppscore
+mlflow
+pytest
+pytest-depends
