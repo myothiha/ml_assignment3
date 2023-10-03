@@ -1,4 +1,4 @@
-# Machine Learning Assignment 2 (AIT - DSAI)
+# Machine Learning Assignment 3 (AIT - DSAI)
 
 - [Student Information](#student-information)
 - [Files Structure](#files-structure)
@@ -9,12 +9,12 @@
  - ID: st123783
 
 ## Files Structure
- - "A02_Car_Price_Prediction.ipynb" contain codes for training the model.
+ - In source_code/model_training, "A03_Car_Price_Prediction.ipynb" contain codes for training the model.
  - "Car.csv" is the dataset used for this assignment.
- - The 'app' folder include the source_code for the web application, Dockerfiles and docker-compose.yaml for containerization of the application and mlflow.
+ - The 'source_code' folder include the code for the web application written in flask, and bootstrapping code to load trained models.
 
 ## How to run
- - Run the docker-compose file inside the app folder.
- - Then, the model for assignment2 can be accessed on http://localhost:8000/assignment2
- - You can still access the old model from assignment using the top menu.
- - Otherwise, you can directly go to https://st123783.ml2023.cs.ait.ac.th/assignment2
+ - The web application is already deployed at the CSIM server.
+ - You can access it at https://st123783.ml2023.cs.ait.ac.th
+ - You can access all models from assignment 1, 2 and 3 using the top menu.
+ - Or, you can directly access assignment 3 model at https://st123783.ml2023.cs.ait.ac.th/assignment3

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Car Price Prediction</title>
+  <title>A1 - Car Price Prediction</title>
   <!-- Include Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -12,9 +12,33 @@
   {% include "menu.html" %}
 
   <div class="container mt-5">
+    <div class="card mb-5">
+      <div class="card-body">
+        <h4>Prediction</h4>
+        <ul>
+          <li>The model will predict a selling price for your car.</li>
+        </ul>
+
+        <h4>Input Features:</h4>
+        <ul>
+          <li>Brand: The company name that have produced your car.</li>
+          <li>Max Power: the highest amount of power that its engine can produce under optimal conditions.</li>
+          <li>Mileage: The fuel efficiency of your car which refers to the distance your car can travel on a specific amount of fuel.</li>
+          <li>Year: It is refered to the year in which the car was manufactured or produced.</li>
+        </ul>
+
+        <h4>How to use:</h4>
+        <ul>
+          <li>You don't provide any information regarding your car. Default values will be used.</li>
+          <li>Fill the information related to your car: Brand, Max Power, Mileage and Year.</li>
+          <li>You can leave blank if you don't information for a field. In that case, default values will be used.</li>
+          <li>Default values for each field is shown below. </li>
+        </ul>
+      </div>
+    </div>
     <div class="card">
       <div class="card-body">
-        <h1 class="card-title text-center">Car Price Prediction</h1>
+        <h1 class="card-title text-center">Car Price Prediction Model 1</h1>
         <form method="post" action="/predict">
           <div class="mb-3">
             <label for="carBrand" class="form-label">Car Brand: (Choose one of the brand: otherwise, the first brand will be chosen.)</label>

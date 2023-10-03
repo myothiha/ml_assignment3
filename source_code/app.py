@@ -104,8 +104,8 @@ def assignment3():
 @app.route('/a3_predict', methods=['POST'])
 def a3_predict():
 
+    # load prediction model which is stored in MLFlow.
     model = load_model3()
-
 
     # Fetch required data from the pickle data.
     scaler, brand_ohe, default_values, classes = load_meta_data()
@@ -138,6 +138,7 @@ def a3_predict():
     input_features[:, 0: 3] = scaler.transform(input_features[:, 0: 3])
     input_features = np.insert(input_features, 0, 1, axis=1)
     name = 'Myo Thiha'
+
     # Use the model to predict the car price.
     predicted_class = model.predict(input_features)[0]
 
