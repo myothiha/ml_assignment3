@@ -5,7 +5,6 @@ from model.regression_classes import *;
 import numpy as np
 app = Flask(__name__)
 
-
 @app.route('/', methods=['GET'])
 def index():
     return render_template("assignment1.html", brands = brand_le.classes_, prediction = 0, default_values=default_values)
@@ -75,7 +74,12 @@ def a2_predict():
     else:
         year = float(request.form['year'])
 
-    encoded_brand = list(brand_ohe.transform([['Skoda']]).toarray()[0])
+    if not request.form['brand']:
+        brand = 'Skoda'
+    else:
+        brand = request.form['brand']
+
+    encoded_brand = list(brand_ohe.transform([[brand]]).toarray()[0])
 
     # Scale and encode the inputs.
     input_features = np.array([[max_power, mileage, year] + encoded_brand])
@@ -102,8 +106,6 @@ def a3_predict():
 
     model = load_model3()
 
-    # Fetch required data from the pickle data.
-    load_model = load_model2()
 
     # Fetch required data from the pickle data.
     scaler, brand_ohe, default_values, classes = load_meta_data()
@@ -124,7 +126,12 @@ def a3_predict():
     else:
         year = float(request.form['year'])
 
-    encoded_brand = list(brand_ohe.transform([['Skoda']]).toarray()[0])
+    if not request.form['brand']:
+        brand = 'Skoda' # default value
+    else:
+        brand = request.form['brand']
+
+    encoded_brand = list(brand_ohe.transform([[brand]]).toarray()[0])
 
     # Scale and encode the inputs.
     input_features = np.array([[max_power, mileage, year] + encoded_brand])
